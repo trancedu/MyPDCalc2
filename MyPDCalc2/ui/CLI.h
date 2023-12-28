@@ -6,6 +6,7 @@ class CLI : public UserInterface
 {
 public:
 	explicit CLI(std::istream& in, std::ostream& out) : in_{ in }, out_{ out } {}
+	CLI() = default;
 	void showMessage(const string& message) override {
 		out_ << message << '\n';
 	}

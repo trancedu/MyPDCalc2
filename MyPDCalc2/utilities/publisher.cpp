@@ -1,7 +1,8 @@
 #include "publisher.h"
-#include "observer.h"
 #include "exception.h"
 #include <format>
+
+Publisher::~Publisher() = default;
 
 void Publisher::raise(const string& eventName, const std::any& message)
 {
@@ -28,7 +29,6 @@ void Publisher::detach(const string& eventName, const string& observerName)
 	}
 }
 
-Publisher::~Publisher() = default;
 
 void Publisher::checkEventNameInEvents(const string& eventName) const
 {

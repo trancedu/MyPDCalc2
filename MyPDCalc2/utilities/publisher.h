@@ -3,11 +3,10 @@
 #include <unordered_map>
 #include <any>
 #include <memory>
+#include "observer.h"
 using std::string;
 using std::unique_ptr, std::shared_ptr;
 using std::unordered_map;
-
-class Observer;
 
 class Publisher
 {
