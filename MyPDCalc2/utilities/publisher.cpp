@@ -3,6 +3,15 @@
 #include "exception.h"
 #include <format>
 
+void Publisher::raise(const string& eventName, const std::any& message)
+{
+	checkEventNameInEvents(eventName);
+
+	for (const auto& [observerName, observer] : events_.at(eventName)) {
+		observer->notify(message);
+	}
+}
+
 void Publisher::attach(const string& eventName, ObserverUPtr observer)
 {
 	checkEventNameInEvents(eventName);
@@ -25,15 +34,5 @@ void Publisher::checkEventNameInEvents(const string& eventName) const
 {
 	if (!events_.contains(eventName)) {
 		throw Exception{ std::format("No eventName {} in events_", eventName) };
-	}
-}
-
-
-void Publisher::raise(const string& eventName, const std::any& message)
-{
-	checkEventNameInEvents(eventName);
-
-	for (const auto& [observerName, observer] : events_.at(eventName)) {
-		observer->notify(message);
 	}
 }
