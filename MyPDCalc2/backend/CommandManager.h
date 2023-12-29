@@ -1,34 +1,46 @@
 #pragma once
-#include <algorithm>
-#include "CommandFactory.h"
-#include "UserInterface.h"
 
-class CommandManager
-{
+#include <memory>
+#include <vector>
+#include <algorithm>
+#include "Command.h"
+#include "UserInterface.h" 
+
+class CommandManager {
 public:
-	CommandManager(UserInterface& ui) : ui_{ ui }, commands(100, nullptr) {}
-	void execute(unique_ptr<Command> command) {
-		command->execute();
-		commands[position_] = std::move(command);
-		position_++;
-	}
-	void undo() {
-		position_--;
-		if (position_ >= 0) {
-			commands[position_]->undo();
-		}
-		else {
-			position_ = 0;
-		}
-	}
-	void redo() {
-		if (commands[position_]) {
-			commands[position_]->execute();
-			std::fill(commands.begin() + position_ + 1, commands.end(), nullptr);
-		}
-	}
+    explicit CommandManager(UserInterface& ui) : ui_(ui) {}
+
+    void execute(std::unique_ptr<Command> command) {
+        if (!command) return;
+
+        // If we're not at the end, remove the future commands
+        if (position_ < commands.size()) {
+            commands.erase(commands.begin() + position_, commands.end());
+        }
+
+        command->execute();
+        commands.push_back(std::move(command));
+        position_ = commands.size();
+    }
+
+    void undo() {
+        if (position_ > 0) {
+            position_--;
+            if (commands[position_]) {
+                commands[position_]->undo();
+            }
+        }
+    }
+
+    void redo() {
+        if (position_ < commands.size() && commands[position_]) {
+            commands[position_]->execute();
+            position_++;
+        }
+    }
+
 private:
-	UserInterface& ui_;
-	std::vector<unique_ptr<Command>> commands;
-	int position_ = 0;
+    UserInterface& ui_;
+    std::vector<std::unique_ptr<Command>> commands;
+    int position_ = 0;
 };

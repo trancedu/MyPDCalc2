@@ -5,21 +5,22 @@
 #include "stack.h"
 #include "UserInterface.h"
 #include "exception.h"
+#include "CommandManager.h"
 
 class CommandInterpreter
 {
 public:
-	explicit CommandInterpreter(UserInterface& ui) : ui_{ ui } {}
+	explicit CommandInterpreter(UserInterface& ui) : ui_{ ui }, manager_{ ui } {}
 	void execute(const string& command) {
 		if (double d; isNum(command, d)) {
 			Stack::Instance().push(d);
-			//manager_.executeCommand(std::make_unique<EnterCommand>(d));
+			manager_.execute(std::make_unique<EnterNumber>(d));
 		}
 		else if (command == "undo") {
-			//commandManager.undo();
+			manager_.undo();
 		}
 		else if (command == "redo") {
-			//commandManager.redo();
+			manager_.redo();
 		}
 		else {
 			try {
@@ -40,5 +41,5 @@ private:
 		return true;
 	}
 	UserInterface& ui_;
-	//CommandManager manager_;
+	CommandManager manager_;
 };
