@@ -25,10 +25,13 @@ public:
 		else {
 			try {
 				std::unique_ptr<Command> cmd = CommandFactory::Instance().allocateCommand(command);
+				if (!cmd) { 
+					ui_.showMessage(std::format("The command {} is not recognized", command)); 
+				}
 				manager_.execute(std::move(cmd));
 			}
 			catch (const Exception& e) {
-				ui_.showMessage(std::format("The command {} is not recognized", command));
+				ui_.showMessage(std::format("Error in Executing commands: {}", e.what()));
 			}
 		}
 	}

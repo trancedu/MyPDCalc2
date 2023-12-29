@@ -37,6 +37,9 @@ public:
             commands[position_]->execute();
             position_++;
         }
+        else {
+            ui_.showMessage("Unable to redo");
+        }
     }
 
 private:
