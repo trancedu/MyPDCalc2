@@ -8,7 +8,7 @@ class CommandFactory
 public:
 	unique_ptr<Command> allocateCommand(const string& commandName) {
 		if (auto it = factory_.find(commandName); it != factory_.end()) {
-			return std::move(it->second);
+			return std::unique_ptr<Command>(it->second->clone());
 		}
 	}
 

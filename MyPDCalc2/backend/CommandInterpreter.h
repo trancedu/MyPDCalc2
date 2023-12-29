@@ -6,6 +6,7 @@
 #include "UserInterface.h"
 #include "exception.h"
 #include "CommandManager.h"
+#include "CommandFactory.h"
 
 class CommandInterpreter
 {
@@ -13,7 +14,6 @@ public:
 	explicit CommandInterpreter(UserInterface& ui) : ui_{ ui }, manager_{ ui } {}
 	void execute(const string& command) {
 		if (double d; isNum(command, d)) {
-			Stack::Instance().push(d);
 			manager_.execute(std::make_unique<EnterNumber>(d));
 		}
 		else if (command == "undo") {
@@ -24,7 +24,8 @@ public:
 		}
 		else {
 			try {
-				//std::unique_ptr<Command> cmd = CommandFactory::Instance().allocateCommand(command));
+				std::unique_ptr<Command> cmd = CommandFactory::Instance().allocateCommand(command);
+				manager_.execute(std::move(cmd));
 			}
 			catch (const Exception& e) {
 				ui_.showMessage(std::format("The command {} is not recognized", command));

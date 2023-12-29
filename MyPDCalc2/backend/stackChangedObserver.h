@@ -10,12 +10,7 @@ public:
 	StackChangedObserver(UserInterface& ui) : ui_{ ui } {}
 	string name() const { return "StackChangedObserver"; }
 	void notify(const std::any& message) override {
-		vector<double> data = Stack::Instance().getElements();
-		std::ostringstream oss;
-		for (const auto& num : data) {
-			oss << num << "\t";
-		}
-		ui_.showMessage(oss.str());
+		ui_.handleStackChanged();
 	}
 private:
 	UserInterface& ui_;

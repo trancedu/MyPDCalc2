@@ -11,5 +11,6 @@ int main()
 	registerCoreCommands();
 	cli.attach("CommandEntered", std::make_unique<CommandEnteredObserver>(ci));
 	Stack::Instance().attach("StackChanged", std::make_unique<StackChangedObserver>(cli));
+	cli.execute();
 	return 0;
 }

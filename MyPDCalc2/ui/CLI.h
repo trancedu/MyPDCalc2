@@ -10,11 +10,16 @@ public:
 	explicit CLI(std::istream& in, std::ostream& out) : in_{ in }, out_{ out } {}
 	CLI() = default;
 	void showMessage(const string& message) override {
-		out_ << message << '\n';
+		out_ << "Message: " << message << '\n';
 	}
 
 	void handleStackChanged() override {
-		// out_ << stack top elements << '\n';
+		out_ << "Stack: ";
+		vector<double> data = Stack::Instance().getElements();
+		for (const auto d : data) {
+			out_ << d << '\t';
+		}
+		out_ << '\n';
 	}
 
 	void execute() override {
