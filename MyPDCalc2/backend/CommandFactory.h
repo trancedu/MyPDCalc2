@@ -38,5 +38,4 @@ void registerCoreCommands() {
 	CommandFactory& factory = CommandFactory::Instance();
 	factory.registerCommand(std::make_unique<Add>());
 	factory.registerCommand(std::make_unique<Sine>());
-
 }

@@ -85,3 +85,20 @@ public:
 	double binaryOperation(double num1, double num2) const override { return num1 + num2; }
 	Command* clone() override { return new Add(*this); }
 };
+
+class EnterNumber : public Command
+{
+public:
+	explicit EnterNumber(double num) : num_{ num } {}
+	std::string name() const override { return "EnterNumber"; }
+	void checkPrecondition() const override {}
+	void executeImpl() override {
+		Stack::Instance().push(num_);
+	}
+	void undo() override {
+		Stack::Instance().pop();
+	}
+	Command* clone() override { return new EnterNumber(*this); }
+private:
+	double num_;
+};
