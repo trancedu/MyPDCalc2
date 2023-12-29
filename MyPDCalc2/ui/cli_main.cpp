@@ -3,10 +3,12 @@
 #include "stack.h"
 #include "stackChangedObserver.h"
 #include "CommandEnteredObserver.h"
+#include "CommandFactory.h"
 int main()
 {
 	CLI cli{ std::cin, std::cout };
 	CommandInterpreter ci{ cli };
+	registerCoreCommands();
 	cli.attach("CommandEntered", std::make_unique<CommandEnteredObserver>(ci));
 	Stack::Instance().attach("StackChanged", std::make_unique<StackChangedObserver>(cli));
 	return 0;

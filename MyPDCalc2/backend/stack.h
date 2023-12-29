@@ -17,6 +17,10 @@ public:
 	using Publisher::detach;
 private:
 	Stack() = default;
+	Stack(const Stack&) = delete;
+	Stack& operator=(const Stack&) = delete;
+	Stack(Stack&&) = delete;
+	Stack& operator=(Stack&&) = delete;
 	void raiseStackChangedEvent();
 	vector<double> data_;
 };
