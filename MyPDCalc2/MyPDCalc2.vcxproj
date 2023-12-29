@@ -129,16 +129,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="backend\command.h" />
+    <ClInclude Include="backend\CommandEnteredObserver.h" />
+    <ClInclude Include="backend\CommandFactory.h" />
+    <ClInclude Include="backend\CommandInterpreter.h" />
+    <ClInclude Include="backend\CommandManager.h" />
     <ClInclude Include="backend\stack.h" />
+    <ClInclude Include="backend\stackChangedObserver.h" />
     <ClInclude Include="ui\CLI.h" />
     <ClInclude Include="ui\UserInterface.h" />
     <ClInclude Include="utilities\exception.h" />
     <ClInclude Include="utilities\observer.h" />
     <ClInclude Include="utilities\publisher.h" />
+    <ClInclude Include="utilities\Tokenizer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stack.cpp" />
     <ClCompile Include="ui\cli_main.cpp" />
+    <ClCompile Include="utilities\observer.cpp" />
     <ClCompile Include="utilities\publisher.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

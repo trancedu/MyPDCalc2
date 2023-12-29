@@ -7,17 +7,21 @@ void Stack::push(double num, bool notify) {
 	}
 }
 
-void Stack::pop(bool notify) {
+double Stack::pop(bool notify) {
+	double top = data_.back();
 	data_.pop_back();
 	if (notify) {
 		raiseStackChangedEvent();
 	}
+	return top;
 }
 
 void Stack::clear() {
 	data_.clear();
 	raiseStackChangedEvent();
 }
+
+inline int Stack::size() { return data_.size(); }
 
 vector<double> Stack::getElements(int n) {
 	if (data_.size() < n) {

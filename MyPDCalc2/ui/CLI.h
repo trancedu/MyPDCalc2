@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include "UserInterface.h"
+#include "Tokenizer.h"
+#include "CommandInterpreter.h"
 
 class CLI : public UserInterface
 {
@@ -14,6 +16,18 @@ public:
 	void handleStackChanged() override {
 		// out_ << stack top elements << '\n';
 	}
+
+	void execute() override {
+		for (string line; std::getline(in_, line, '\n');) {
+			std::istringstream iss{ line };
+			Tokenizer tokenizer{ iss };
+			for (const string& token : tokenizer) {
+				if (token == "exit") return;
+				raise(commandEnteredEventName(), token);
+			}
+		}
+	}
+
 private:
 	std::istream& in_;
 	std::ostream& out_;

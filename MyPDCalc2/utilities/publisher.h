@@ -14,10 +14,11 @@ class Publisher
 private:
 	unordered_map<string, unordered_map<string, ObserverUPtr>> events_;
 public:
-	void raise(const string& eventName, const std::any& message);
 	void attach(const string& eventName, ObserverUPtr observer);
 	void detach(const string& eventName, const string& observerName);
 	virtual ~Publisher();
+protected:
+	void raise(const string& eventName, const std::any& message);
 private:
 	void checkEventNameInEvents(const string& eventName) const;
 };
