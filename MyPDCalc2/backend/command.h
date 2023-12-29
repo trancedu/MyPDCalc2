@@ -15,11 +15,31 @@ public:
 	virtual std::string name() const = 0;
 	virtual Command* clone() = 0;
 	virtual void undo() = 0;
+	virtual void deallocate() { delete this; }
+	virtual ~Command() = default;
 private:
 	virtual void checkPrecondition() const = 0;
 	virtual void executeImpl() = 0;
 };
 
+inline void CommandDeleter(Command* p)
+{
+	if (p) p->deallocate();
+	return;
+}
+
+using CommandPtr = unique_ptr<Command, decltype(&CommandDeleter)>;
+
+template<typename T, typename... Args>
+auto MakeCommandPtr(Args&&... args) requires std::derived_from<T, Command>
+{
+	return CommandPtr{ new T{std::forward<Args>(args)...}, &CommandDeleter };
+}
+
+inline auto MakeCommandPtr(Command* p)
+{
+	return CommandPtr{ p, &CommandDeleter };
+}
 
 class UnaryCommand : public Command
 {
@@ -102,3 +122,4 @@ public:
 private:
 	double num_;
 };
+

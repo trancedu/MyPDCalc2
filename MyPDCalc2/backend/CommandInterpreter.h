@@ -14,7 +14,7 @@ public:
 	explicit CommandInterpreter(UserInterface& ui) : ui_{ ui }, manager_{ ui } {}
 	void execute(const string& command) {
 		if (double d; isNum(command, d)) {
-			manager_.execute(std::make_unique<EnterNumber>(d));
+			manager_.execute(MakeCommandPtr(new EnterNumber{d}));
 		}
 		else if (command == "undo") {
 			manager_.undo();
@@ -24,7 +24,7 @@ public:
 		}
 		else {
 			try {
-				std::unique_ptr<Command> cmd = CommandFactory::Instance().allocateCommand(command);
+				CommandPtr cmd = CommandFactory::Instance().allocateCommand(command);
 				if (!cmd) { 
 					ui_.showMessage(std::format("The command {} is not recognized", command)); 
 				}

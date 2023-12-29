@@ -10,7 +10,7 @@ class CommandManager {
 public:
     explicit CommandManager(UserInterface& ui) : ui_(ui) {}
 
-    void execute(std::unique_ptr<Command> command) {
+    void execute(CommandPtr command) {
         if (!command) return;
 
         // If we're not at the end, remove the future commands
@@ -44,6 +44,6 @@ public:
 
 private:
     UserInterface& ui_;
-    std::vector<std::unique_ptr<Command>> commands;
+    std::vector<CommandPtr> commands;
     int position_ = 0;
 };

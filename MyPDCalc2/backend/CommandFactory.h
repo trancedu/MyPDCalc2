@@ -6,17 +6,18 @@
 class CommandFactory
 {
 public:
-	unique_ptr<Command> allocateCommand(const string& commandName) {
+	CommandPtr allocateCommand(const string& commandName) {
 		if (auto it = factory_.find(commandName); it != factory_.end()) {
-			return std::unique_ptr<Command>(it->second->clone());
+			return MakeCommandPtr(it->second->clone());
 		}
+		return MakeCommandPtr(nullptr);
 	}
 
-	void registerCommand(const string& commandName, std::unique_ptr<Command> command) {
+	void registerCommand(const string& commandName, CommandPtr command) {
 		factory_[commandName] = std::move(command);
 	}
 
-	void registerCommand(std::unique_ptr<Command> command) {
+	void registerCommand(CommandPtr command) {
 		factory_[command->name()] = std::move(command);
 	}
 
@@ -25,7 +26,7 @@ public:
 		return factory;
 	}
 private:
-	std::unordered_map<string, unique_ptr<Command>> factory_;
+	std::unordered_map<string, CommandPtr> factory_;
 	CommandFactory() = default;
 	CommandFactory(const CommandFactory&) = delete;
 	CommandFactory& operator=(const CommandFactory&) = delete;
@@ -36,6 +37,7 @@ private:
 
 void registerCoreCommands() {
 	CommandFactory& factory = CommandFactory::Instance();
-	factory.registerCommand(std::make_unique<Add>());
-	factory.registerCommand(std::make_unique<Sine>());
+	factory.registerCommand(MakeCommandPtr(new Add));
+	factory.registerCommand(MakeCommandPtr(new Sine));
 }
+
