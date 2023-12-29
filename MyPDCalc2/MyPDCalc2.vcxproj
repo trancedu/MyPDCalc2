@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="backend\stack.h" />
     <ClInclude Include="ui\CLI.h" />
     <ClInclude Include="ui\UserInterface.h" />
     <ClInclude Include="utilities\exception.h" />
@@ -136,6 +137,7 @@
     <ClInclude Include="utilities\publisher.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="stack.cpp" />
     <ClCompile Include="ui\cli_main.cpp" />
     <ClCompile Include="utilities\publisher.cpp" />
   </ItemGroup>
