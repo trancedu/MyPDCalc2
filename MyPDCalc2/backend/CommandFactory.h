@@ -14,11 +14,13 @@ public:
 	}
 
 	void registerCommand(const string& commandName, CommandPtr command) {
-		factory_[commandName] = std::move(command);
+		//factory_[commandName] = std::move(command);
+		factory_.insert({ commandName, std::move(command) });
 	}
 
 	void registerCommand(CommandPtr command) {
-		factory_[command->name()] = std::move(command);
+		//factory_[command->name()] = std::move(command);
+		factory_.insert({ command->name(), std::move(command) });
 	}
 
 	static CommandFactory& Instance() {
