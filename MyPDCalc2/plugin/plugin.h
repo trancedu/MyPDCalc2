@@ -11,6 +11,14 @@ public:
 		char** commandNames;
 		Command** commands;
 	};
+	struct ApiVersion
+	{
+		int major;
+		int minor;
+	};
 	virtual const PluginDescriptor& getPluginDescriptor() const = 0;
+	virtual const ApiVersion apiVersion() const = 0;
 };
+
+
 

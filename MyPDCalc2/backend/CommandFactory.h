@@ -14,18 +14,25 @@ public:
 	}
 
 	void registerCommand(const string& commandName, CommandPtr command) {
-		//factory_[commandName] = std::move(command);
 		factory_.insert({ commandName, std::move(command) });
 	}
 
 	void registerCommand(CommandPtr command) {
-		//factory_[command->name()] = std::move(command);
 		factory_.insert({ command->name(), std::move(command) });
 	}
 
 	static CommandFactory& Instance() {
 		static CommandFactory factory;
 		return factory;
+	}
+
+	CommandPtr deregisterCommand(const string& name) {
+		if (auto it = factory_.find(name); it != factory_.end()) {
+			auto tmp = MakeCommandPtr(it->second.release());
+			factory_.erase(it);
+			return tmp;
+		}
+		else return MakeCommandPtr(nullptr);
 	}
 private:
 	std::unordered_map<string, CommandPtr> factory_;

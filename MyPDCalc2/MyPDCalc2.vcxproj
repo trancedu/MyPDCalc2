@@ -136,7 +136,12 @@
     <ClInclude Include="backend\CommandManager.h" />
     <ClInclude Include="backend\stack.h" />
     <ClInclude Include="backend\stackChangedObserver.h" />
+    <ClInclude Include="plugin\DynamicLoader.h" />
+    <ClInclude Include="plugin\HyperbolicLnPlugin.h" />
     <ClInclude Include="plugin\plugin.h" />
+    <ClInclude Include="plugin\PluginLoader.h" />
+    <ClInclude Include="plugin\StackPluginInterface.h" />
+    <ClInclude Include="plugin\WindowsDynamicLoader.h" />
     <ClInclude Include="ui\CLI.h" />
     <ClInclude Include="ui\UserInterface.h" />
     <ClInclude Include="utilities\exception.h" />
@@ -145,7 +150,7 @@
     <ClInclude Include="utilities\Tokenizer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stack.cpp" />
+    <ClCompile Include="backend\stack.cpp" />
     <ClCompile Include="ui\cli_main.cpp" />
     <ClCompile Include="utilities\observer.cpp" />
     <ClCompile Include="utilities\publisher.cpp" />

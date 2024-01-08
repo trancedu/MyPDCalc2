@@ -21,7 +21,7 @@ void Stack::clear() {
 	raiseStackChangedEvent();
 }
 
-int Stack::size() { return data_.size(); }
+size_t Stack::size() { return data_.size(); }
 
 vector<double> Stack::getElements(int n) {
 	if (data_.size() < n) {

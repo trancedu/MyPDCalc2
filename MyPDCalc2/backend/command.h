@@ -13,7 +13,7 @@ public:
 		executeImpl();
 	}
 	virtual std::string name() const = 0;
-	virtual Command* clone() = 0;
+	virtual Command* clone() const = 0;
 	virtual void undo() = 0;
 	virtual void deallocate() { delete this; }
 	virtual ~Command() = default;
@@ -69,7 +69,7 @@ class Sine : public UnaryCommand
 public:
 	std::string name() const override { return "sin"; }
 	double unaryOperation(double num) const override { return std::sin(num); }
-	Command* clone() override { return new Sine(*this); }
+	Command* clone() const override { return new Sine(*this); }
 };
 
 
@@ -103,7 +103,7 @@ class Add : public BinaryCommand
 public:
 	std::string name() const override { return "+"; }
 	double binaryOperation(double num1, double num2) const override { return num1 + num2; }
-	Command* clone() override { return new Add(*this); }
+	Command* clone() const override { return new Add(*this); }
 };
 
 class EnterNumber : public Command
@@ -118,8 +118,37 @@ public:
 	void undo() override {
 		Stack::Instance().pop();
 	}
-	Command* clone() override { return new EnterNumber(*this); }
+	Command* clone() const override { return new EnterNumber(*this); }
 private:
 	double num_;
 };
 
+
+class PluginCommand : public Command
+{
+public:
+	virtual ~PluginCommand() = default;
+
+private:
+	virtual const char* checkPluginPreconditions() const noexcept = 0;
+	virtual PluginCommand* clonePluginImpl() const noexcept = 0;
+
+	void checkPrecondition() const override final;
+	PluginCommand* clone() const override final;
+};
+
+void PluginCommand::checkPrecondition() const
+{
+	if (const char* p = checkPluginPreconditions())
+		throw Exception(p);
+
+	return;
+}
+
+PluginCommand* PluginCommand::clone() const
+{
+	if (auto p = clonePluginImpl())
+		return p;
+	else
+		throw Exception("Problem cloning a plugin command");
+}
