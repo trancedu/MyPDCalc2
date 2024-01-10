@@ -1,37 +1,23 @@
+//#pragma once
+//#ifdef PLUGINDLL_EXPORTS
+//#define MYPLUGIN_API __declspec(dllexport)
+//#else
+//#define MYPLUGIN_API __declspec(dllimport)
+//#endif
+//extern "C" MYPLUGIN_API double addOne(int x);
+
 #pragma once
+#ifdef PLUGINDLL_EXPORTS
+#define MYPLUGIN_API __declspec(dllexport)
+#else
+#define MYPLUGIN_API __declspec(dllimport)
+#endif
+
 #include <iostream>
 #include <ranges>
 #include "plugin.h"
 #include "command.h"
 #include "StackPluginInterface.h"
-
-class HyperbolicLnPlugin : public Plugin
-{
-public:
-	HyperbolicLnPlugin() {
-		createPluginDescriptor();
-	}
-	~HyperbolicLnPlugin() = default;
-private:
-	const PluginDescriptor& getPluginDescriptor() const override { return pd_; }
-	const ApiVersion apiVersion() const override { return { 1, 0 }; }
-    void createPluginDescriptor(); 
-	PluginDescriptor pd_;
-	vector<Command*> rawCommands_;
-	vector<unique_ptr<Command>> commands_;
-	vector<string> commandNames_;
-	vector<char*> rawNames_;
-};
-
-extern "C" void* AllocPlugin() {
-	return new HyperbolicLnPlugin;
-}
-extern "C" void DeallocPlugin(void* p) {
-	auto d = static_cast<Plugin*>(p);
-	delete d;
-}
-
-
 
 using std::cout;
 using std::endl;
@@ -40,8 +26,34 @@ using std::vector;
 using std::string;
 using std::unique_ptr;
 
+extern "C" MYPLUGIN_API void* AllocPlugin();
+extern "C" MYPLUGIN_API void DeallocPlugin(void* p);
+extern "C" MYPLUGIN_API double addTwo(int x);
 
-class HyperbolicLnPluginCommand : public PluginCommand
+class MYPLUGIN_API HyperbolicLnPlugin : public Plugin
+{
+public:
+    HyperbolicLnPlugin() {
+        createPluginDescriptor();
+    }
+    ~HyperbolicLnPlugin() = default;
+private:
+    const PluginDescriptor& getPluginDescriptor() const override { return pd_; }
+    const ApiVersion apiVersion() const override { return { 1, 0 }; }
+    void createPluginDescriptor();
+    HyperbolicLnPlugin(const HyperbolicLnPlugin&) = delete;
+    HyperbolicLnPlugin& operator=(const HyperbolicLnPlugin&) = delete;
+    HyperbolicLnPlugin(HyperbolicLnPlugin&&) = delete;
+    HyperbolicLnPlugin& operator=(HyperbolicLnPlugin&&) = delete;
+    PluginDescriptor pd_;
+    vector<Command*> rawCommands_;
+    vector<unique_ptr<Command>> commands_;
+    vector<string> commandNames_;
+    vector<char*> rawNames_;
+};
+
+
+class MYPLUGIN_API HyperbolicLnPluginCommand : public PluginCommand
 {
 public:
     HyperbolicLnPluginCommand() = default;
@@ -63,7 +75,7 @@ private:
 
     virtual double unaryOperation(double top) const = 0;
 
-    double top_;
+    double top_ = 0;
 };
 
 void HyperbolicLnPluginCommand::deallocate()
@@ -119,7 +131,7 @@ HyperbolicLnPluginCommand* HyperbolicLnPluginCommand::clonePluginImpl() const no
 
 // takes the hyperbolic sine of a number on the stack
 // precondition: at least one number on the stack
-class Sinh : public HyperbolicLnPluginCommand
+class MYPLUGIN_API Sinh : public HyperbolicLnPluginCommand
 {
 public:
     Sinh() = default;
@@ -168,6 +180,8 @@ void HyperbolicLnPlugin::createPluginDescriptor() {
     pd_.nCommands = n;
     commandNames_.reserve(n);
     commands_.reserve(n);
+    rawCommands_.resize(n);
+    rawNames_.resize(n);
     commandNames_.emplace_back("sinh\0");
     commands_.emplace_back(new Sinh);
     for (int i = 0; i < n; i++) {

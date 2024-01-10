@@ -14,6 +14,8 @@
 #include <string>
 #include <format>
 #include <set>
+#include <iostream>
+#include <filesystem>
 #include "WindowsDynamicLoader.h"
 using std::vector;
 using std::string;

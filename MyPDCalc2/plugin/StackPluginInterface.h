@@ -5,7 +5,7 @@ extern "C" void StackPush(double d, bool notify) {
 }
 
 extern "C" double StackPop(bool notify) {
-	Stack::Instance().pop(notify);
+	return Stack::Instance().pop(notify);
 }
 
 extern "C" size_t StackSize() {

@@ -127,6 +127,7 @@ private:
 class PluginCommand : public Command
 {
 public:
+	PluginCommand() = default;
 	virtual ~PluginCommand() = default;
 
 private:
