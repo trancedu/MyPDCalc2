@@ -1,21 +1,14 @@
 #pragma once
 #include "stack.h"
-extern "C" void StackPush(double d, bool notify) {
-	Stack::Instance().push(d, notify);
-}
+extern Stack* g_stackInstance;
 
-extern "C" double StackPop(bool notify) {
-	return Stack::Instance().pop(notify);
-}
+extern "C" void StackPush(double d, bool notify);
 
-extern "C" size_t StackSize() {
-	return Stack::Instance().size();
-}
+extern "C" double StackPop(bool notify);
 
-extern "C" double StackFirstElement() {
-	return Stack::Instance().getElements(1)[0];
-}
+extern "C" size_t StackSize();
 
-extern "C" double StackSecondElement() {
-	return Stack::Instance().getElements(2)[1];
-}
+extern "C" double StackFirstElement();
+
+extern "C" double StackSecondElement();
+

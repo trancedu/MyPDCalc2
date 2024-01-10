@@ -23,6 +23,21 @@ public:
 			else return nullptr;
 		}
 	}
+
+	void setStackInDLL() override {
+		if (!handle_) {
+			throw Exception("Trying to set Stack in DLL, but shared library is not open");
+		}
+		else {
+			auto func = GetProcAddress(handle_, GetSetStackInDLLName().c_str());
+			if (auto f = reinterpret_cast<SetStackFunc>(func)) {
+				(*f)(&Stack::Instance());
+			}
+			else throw Exception("Could not set stack in the plugin");
+		}
+		return;
+	}
+
 	void deallocatePlugin(Plugin* p) override {
 		if (!handle_) {
 			throw Exception("Trying to deallocate a plugin, but shared library is not open");

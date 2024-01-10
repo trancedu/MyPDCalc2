@@ -21,13 +21,7 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HyperbolicLnPlugin.cpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="HyperbolicLnPlugin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="testdll.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,16 +32,19 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="testdll.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\MyPDCalc2\backend\stack.cpp">
+    <ClCompile Include="HyperbolicLnPlugin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\MyPDCalc2\utilities\observer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\MyPDCalc2\utilities\publisher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MyPDCalc2\plugin\StackPluginInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MyPDCalc2\backend\stack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
