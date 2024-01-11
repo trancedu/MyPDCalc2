@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyPDCalc2", "MyPDCalc2\MyPD
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PluginDLL", "PluginDLL\PluginDLL.vcxproj", "{2143E4E1-7689-488F-8088-F006F2A5AADE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "backend", "backend\backend.vcxproj", "{DCAE18D3-7444-48A2-9E1B-6CD90C43965D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{2143E4E1-7689-488F-8088-F006F2A5AADE}.Release|x64.Build.0 = Release|x64
 		{2143E4E1-7689-488F-8088-F006F2A5AADE}.Release|x86.ActiveCfg = Release|Win32
 		{2143E4E1-7689-488F-8088-F006F2A5AADE}.Release|x86.Build.0 = Release|Win32
+		{DCAE18D3-7444-48A2-9E1B-6CD90C43965D}.Debug|x64.ActiveCfg = Debug|x64
+		{DCAE18D3-7444-48A2-9E1B-6CD90C43965D}.Debug|x64.Build.0 = Debug|x64
+		{DCAE18D3-7444-48A2-9E1B-6CD90C43965D}.Debug|x86.ActiveCfg = Debug|Win32
+		{DCAE18D3-7444-48A2-9E1B-6CD90C43965D}.Debug|x86.Build.0 = Debug|Win32
+		{DCAE18D3-7444-48A2-9E1B-6CD90C43965D}.Release|x64.ActiveCfg = Release|x64
+		{DCAE18D3-7444-48A2-9E1B-6CD90C43965D}.Release|x64.Build.0 = Release|x64
+		{DCAE18D3-7444-48A2-9E1B-6CD90C43965D}.Release|x86.ActiveCfg = Release|Win32
+		{DCAE18D3-7444-48A2-9E1B-6CD90C43965D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

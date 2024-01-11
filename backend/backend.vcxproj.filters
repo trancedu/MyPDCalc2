@@ -15,52 +15,31 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="utilities\observer.h">
+    <ClInclude Include="..\MyPDCalc2\backend\command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="utilities\publisher.h">
+    <ClInclude Include="..\MyPDCalc2\backend\CommandEnteredObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="utilities\exception.h">
+    <ClInclude Include="..\MyPDCalc2\backend\CommandFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="plugin\DynamicLoader.h">
+    <ClInclude Include="..\MyPDCalc2\backend\CommandInterpreter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="plugin\HyperbolicLnPlugin.h">
+    <ClInclude Include="..\MyPDCalc2\backend\CommandManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="plugin\plugin.h">
+    <ClInclude Include="..\MyPDCalc2\backend\stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="plugin\PluginLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="plugin\WindowsDynamicLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui\CLI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui\UserInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="utilities\Tokenizer.h">
+    <ClInclude Include="..\MyPDCalc2\backend\stackChangedObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="utilities\publisher.cpp">
+    <ClCompile Include="..\MyPDCalc2\backend\stack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ui\cli_main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="utilities\observer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="plugins.pdp" />
   </ItemGroup>
 </Project>
