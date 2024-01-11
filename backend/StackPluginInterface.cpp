@@ -1,24 +1,24 @@
 #include "StackPluginInterface.h"
 #include "stack.h"
 
-Stack* g_stackInstance = nullptr;
+Stack* g_stackInstance = nullptr; // Not used in dev_singleton_conflict branch
 
 void StackPush(double d, bool notify) {
-	g_stackInstance->push(d, notify);
+	Stack::Instance().push(d, notify);
 }
 
 double StackPop(bool notify) {
-	return g_stackInstance->pop(notify);
+	return Stack::Instance().pop(notify);
 }
 
 size_t StackSize() {
-	return g_stackInstance->size();
+	return Stack::Instance().size();
 }
 
 double StackFirstElement() {
-	return g_stackInstance->getElements(1)[0];
+	return Stack::Instance().getElements(1)[0];
 }
 
 double StackSecondElement() {
-	return g_stackInstance->getElements(2)[1];
+	return Stack::Instance().getElements(2)[1];
 }

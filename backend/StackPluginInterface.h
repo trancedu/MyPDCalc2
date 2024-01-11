@@ -1,6 +1,6 @@
 #pragma once
 #include "stack.h"
-extern Stack* g_stackInstance;
+extern Stack* g_stackInstance; // Not used in dev_singleton_conflict branch
 
 extern "C" void StackPush(double d, bool notify);
 
