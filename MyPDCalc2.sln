@@ -6,8 +6,16 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyPDCalc2", "MyPDCalc2\MyPDCalc2.vcxproj", "{9035F29B-7142-489B-AC11-D9437D086E1F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PluginDLL", "PluginDLL\PluginDLL.vcxproj", "{2143E4E1-7689-488F-8088-F006F2A5AADE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DCAE18D3-7444-48A2-9E1B-6CD90C43965D} = {DCAE18D3-7444-48A2-9E1B-6CD90C43965D}
+		{E605C4C9-B282-447B-9629-70E2874FC827} = {E605C4C9-B282-447B-9629-70E2874FC827}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "backend", "backend\backend.vcxproj", "{DCAE18D3-7444-48A2-9E1B-6CD90C43965D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "utilities", "utilities\utilities.vcxproj", "{E605C4C9-B282-447B-9629-70E2874FC827}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ui", "ui\ui.vcxproj", "{AFE16EB9-59E0-499B-A841-53604E9A2905}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +49,22 @@ Global
 		{DCAE18D3-7444-48A2-9E1B-6CD90C43965D}.Release|x64.Build.0 = Release|x64
 		{DCAE18D3-7444-48A2-9E1B-6CD90C43965D}.Release|x86.ActiveCfg = Release|Win32
 		{DCAE18D3-7444-48A2-9E1B-6CD90C43965D}.Release|x86.Build.0 = Release|Win32
+		{E605C4C9-B282-447B-9629-70E2874FC827}.Debug|x64.ActiveCfg = Debug|x64
+		{E605C4C9-B282-447B-9629-70E2874FC827}.Debug|x64.Build.0 = Debug|x64
+		{E605C4C9-B282-447B-9629-70E2874FC827}.Debug|x86.ActiveCfg = Debug|Win32
+		{E605C4C9-B282-447B-9629-70E2874FC827}.Debug|x86.Build.0 = Debug|Win32
+		{E605C4C9-B282-447B-9629-70E2874FC827}.Release|x64.ActiveCfg = Release|x64
+		{E605C4C9-B282-447B-9629-70E2874FC827}.Release|x64.Build.0 = Release|x64
+		{E605C4C9-B282-447B-9629-70E2874FC827}.Release|x86.ActiveCfg = Release|Win32
+		{E605C4C9-B282-447B-9629-70E2874FC827}.Release|x86.Build.0 = Release|Win32
+		{AFE16EB9-59E0-499B-A841-53604E9A2905}.Debug|x64.ActiveCfg = Debug|x64
+		{AFE16EB9-59E0-499B-A841-53604E9A2905}.Debug|x64.Build.0 = Debug|x64
+		{AFE16EB9-59E0-499B-A841-53604E9A2905}.Debug|x86.ActiveCfg = Debug|Win32
+		{AFE16EB9-59E0-499B-A841-53604E9A2905}.Debug|x86.Build.0 = Debug|Win32
+		{AFE16EB9-59E0-499B-A841-53604E9A2905}.Release|x64.ActiveCfg = Release|x64
+		{AFE16EB9-59E0-499B-A841-53604E9A2905}.Release|x64.Build.0 = Release|x64
+		{AFE16EB9-59E0-499B-A841-53604E9A2905}.Release|x86.ActiveCfg = Release|Win32
+		{AFE16EB9-59E0-499B-A841-53604E9A2905}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

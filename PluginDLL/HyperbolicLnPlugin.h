@@ -101,8 +101,8 @@ void HyperbolicLnPluginCommand::executeImpl() noexcept
 void HyperbolicLnPluginCommand::undo() noexcept
 {
     // suppress change signal so only one event raised for the execute
-    StackPop(true);
-    StackPush(top_, false);
+    StackPop(false);
+    StackPush(top_, true);
 
     return;
 }

@@ -105,13 +105,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)ui;$(ProjectDir)utilities;$(ProjectDir)backend;$(ProjectDir)plugin</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)backend;$(SolutionDir)utilities;$(SolutionDir)ui;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\29468\source\repos\MyPDCalc2\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);backend.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);backend.lib;utilities.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -131,25 +131,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="plugin\DynamicLoader.h" />
     <ClInclude Include="plugin\HyperbolicLnPlugin.h" />
-    <ClInclude Include="plugin\plugin.h" />
-    <ClInclude Include="plugin\PluginLoader.h" />
-    <ClInclude Include="plugin\WindowsDynamicLoader.h" />
-    <ClInclude Include="ui\CLI.h" />
-    <ClInclude Include="ui\UserInterface.h" />
-    <ClInclude Include="utilities\exception.h" />
-    <ClInclude Include="utilities\observer.h" />
-    <ClInclude Include="utilities\publisher.h" />
-    <ClInclude Include="utilities\Tokenizer.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="ui\cli_main.cpp" />
-    <ClCompile Include="utilities\observer.cpp" />
-    <ClCompile Include="utilities\publisher.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="plugins.pdp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cli_main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

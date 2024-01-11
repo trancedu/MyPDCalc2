@@ -15,48 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="command.h">
+    <ClInclude Include="exception.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CommandEnteredObserver.h">
+    <ClInclude Include="observer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CommandFactory.h">
+    <ClInclude Include="publisher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CommandInterpreter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CommandManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DynamicLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="plugin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PluginLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="stack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="stackChangedObserver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StackPluginInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowsDynamicLoader.h">
+    <ClInclude Include="Tokenizer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stack.cpp">
+    <ClCompile Include="observer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StackPluginInterface.cpp">
+    <ClCompile Include="publisher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

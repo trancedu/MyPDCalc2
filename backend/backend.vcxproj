@@ -19,16 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\MyPDCalc2\backend\command.h" />
-    <ClInclude Include="..\MyPDCalc2\backend\CommandEnteredObserver.h" />
-    <ClInclude Include="..\MyPDCalc2\backend\CommandFactory.h" />
-    <ClInclude Include="..\MyPDCalc2\backend\CommandInterpreter.h" />
-    <ClInclude Include="..\MyPDCalc2\backend\CommandManager.h" />
-    <ClInclude Include="..\MyPDCalc2\backend\stack.h" />
-    <ClInclude Include="..\MyPDCalc2\backend\stackChangedObserver.h" />
+    <ClInclude Include="command.h" />
+    <ClInclude Include="CommandEnteredObserver.h" />
+    <ClInclude Include="CommandFactory.h" />
+    <ClInclude Include="CommandInterpreter.h" />
+    <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="DynamicLoader.h" />
+    <ClInclude Include="plugin.h" />
+    <ClInclude Include="PluginLoader.h" />
+    <ClInclude Include="stack.h" />
+    <ClInclude Include="stackChangedObserver.h" />
+    <ClInclude Include="StackPluginInterface.h" />
+    <ClInclude Include="WindowsDynamicLoader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\MyPDCalc2\backend\stack.cpp" />
+    <ClCompile Include="stack.cpp" />
+    <ClCompile Include="StackPluginInterface.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -125,7 +131,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)MyPDCalc2\ui;$(SolutionDir)MyPDCalc2\utilities;$(SolutionDir)MyPDCalc2\backend;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)utilities;$(SolutionDir)ui</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
