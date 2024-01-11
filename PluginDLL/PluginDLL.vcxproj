@@ -119,6 +119,8 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);backend.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -146,7 +148,6 @@
     <ClInclude Include="HyperbolicLnPlugin.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\MyPDCalc2\backend\stack.cpp" />
     <ClCompile Include="..\MyPDCalc2\plugin\StackPluginInterface.cpp" />
     <ClCompile Include="..\MyPDCalc2\utilities\observer.cpp" />
     <ClCompile Include="..\MyPDCalc2\utilities\publisher.cpp" />

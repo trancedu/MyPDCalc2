@@ -44,8 +44,5 @@
     <ClCompile Include="..\MyPDCalc2\plugin\StackPluginInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\MyPDCalc2\backend\stack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
