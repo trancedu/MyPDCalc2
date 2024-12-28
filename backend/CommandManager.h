@@ -3,7 +3,7 @@
 #include <memory>
 #include <vector>
 #include <algorithm>
-#include "Command.h"
+#include "command.h"
 #include "UserInterface.h" 
 
 class CommandManager {
