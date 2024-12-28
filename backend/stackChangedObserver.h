@@ -8,7 +8,7 @@ class StackChangedObserver : public Observer
 {
 public:
 	StackChangedObserver(UserInterface& ui) : ui_{ ui } {}
-	string name() const { return "StackChangedObserver"; }
+	string name() const override { return "StackChangedObserver"; }
 	void notify(const std::any& message) override {
 		ui_.handleStackChanged();
 	}
