@@ -2,8 +2,6 @@
 #include "exception.h"
 #include <format>
 
-Publisher::~Publisher() = default;
-
 void Publisher::raise(const string& eventName, const std::any& message)
 {
 	checkEventNameInEvents(eventName);

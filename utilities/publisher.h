@@ -16,7 +16,7 @@ private:
 public:
 	void attach(const string& eventName, ObserverUPtr observer);
 	void detach(const string& eventName, const string& observerName);
-	virtual ~Publisher();
+	virtual ~Publisher() = default;
 protected:
 	void raise(const string& eventName, const std::any& message);
 private:
