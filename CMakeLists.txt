@@ -43,9 +43,9 @@ add_library(ui SHARED
 )
 
 # Include directories for all libraries
-target_include_directories(backend PUBLIC ${CMAKE_SOURCE_DIR}/backend)
+target_include_directories(backend PUBLIC ${CMAKE_SOURCE_DIR}/backend ${CMAKE_SOURCE_DIR}/utilities)
 target_include_directories(utilities PUBLIC ${CMAKE_SOURCE_DIR}/utilities)
-target_include_directories(ui PUBLIC ${CMAKE_SOURCE_DIR}/ui)
+target_include_directories(ui PUBLIC ${CMAKE_SOURCE_DIR}/ui ${CMAKE_SOURCE_DIR}/utilities ${CMAKE_SOURCE_DIR}/backend)
 
 # Link the main executable with the libraries
 add_executable(MyPDCalc2 MyPDCalc2/cli_main.cpp)
