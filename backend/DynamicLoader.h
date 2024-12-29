@@ -14,9 +14,6 @@ public:
 
 	static string GetPluginAllocationName() { return "AllocPlugin"; }
 	static string GetPluginDeallocationName() { return "DeallocPlugin"; }
-
-	virtual void setStackInDLL() = 0;
-	static string GetSetStackInDLLName() { return "DLL_SetStackInstance"; }
 };
 
 

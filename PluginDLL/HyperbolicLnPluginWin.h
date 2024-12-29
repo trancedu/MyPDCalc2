@@ -21,7 +21,6 @@ using std::unique_ptr;
 extern "C" MYPLUGIN_API void* AllocPlugin();
 extern "C" MYPLUGIN_API void DeallocPlugin(void* p);
 extern "C" MYPLUGIN_API double addTwo(int x);
-extern "C" MYPLUGIN_API void DLL_SetStackInstance(void* stackInstance);
 
 class MYPLUGIN_API HyperbolicLnPlugin : public Plugin
 {

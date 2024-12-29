@@ -13,9 +13,3 @@ extern "C" MYPLUGIN_API void DeallocPlugin(void* p) {
 extern "C" MYPLUGIN_API double addTwo(int x) {
     return x + 2;
 }
-
-MYPLUGIN_API void DLL_SetStackInstance(void* stackInstance)
-{
-    auto p = static_cast<Stack*>(stackInstance);
-    g_stackInstance = p;
-}

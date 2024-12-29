@@ -58,7 +58,6 @@ private:
 		loaders_.emplace_back(PlatformFactory::Instance().createDynamicLoader());
 		if (auto p = loaders_.back()->allocatePlugin(name)) {
 			plugins_.emplace_back(p, PluginDeleter(*loaders_.back()));
-			loaders_.back()->setStackInDLL();
 		}
 		else {
 			ui.showMessage(format("Error opening plugin: {}", name));
