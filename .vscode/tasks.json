@@ -8,12 +8,20 @@
 			"targets": [
 				"all"
 			],
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "CMake template build task"
+		},
+		{
+			"type": "cmake",
+			"label": "CMake: configure",
+			"command": "configure",
+			"problemMatcher": [],
+			"detail": "CMake template configure task",
 			"group": {
 				"kind": "build",
 				"isDefault": true
-			},
-			"problemMatcher": [],
-			"detail": "CMake template build task"
+			}
 		}
 	]
 }
