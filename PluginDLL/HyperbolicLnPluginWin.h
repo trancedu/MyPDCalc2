@@ -1,4 +1,9 @@
 #pragma once
+#ifdef PLUGINDLL_EXPORTS
+#define MYPLUGIN_API __declspec(dllexport)
+#else
+#define MYPLUGIN_API __declspec(dllimport)
+#endif
 
 #include <iostream>
 #include <ranges>
@@ -13,7 +18,12 @@ using std::vector;
 using std::string;
 using std::unique_ptr;
 
-class HyperbolicLnPlugin : public Plugin
+extern "C" MYPLUGIN_API void* AllocPlugin();
+extern "C" MYPLUGIN_API void DeallocPlugin(void* p);
+extern "C" MYPLUGIN_API double addTwo(int x);
+extern "C" MYPLUGIN_API void DLL_SetStackInstance(void* stackInstance);
+
+class MYPLUGIN_API HyperbolicLnPlugin : public Plugin
 {
 public:
     HyperbolicLnPlugin() {
@@ -36,7 +46,7 @@ private:
 };
 
 
-class HyperbolicLnPluginCommand : public PluginCommand
+class MYPLUGIN_API HyperbolicLnPluginCommand : public PluginCommand
 {
 public:
     HyperbolicLnPluginCommand() = default;
@@ -114,7 +124,7 @@ HyperbolicLnPluginCommand* HyperbolicLnPluginCommand::clonePluginImpl() const no
 
 // takes the hyperbolic sine of a number on the stack
 // precondition: at least one number on the stack
-class Sinh : public HyperbolicLnPluginCommand
+class MYPLUGIN_API Sinh : public HyperbolicLnPluginCommand
 {
 public:
     Sinh() = default;
