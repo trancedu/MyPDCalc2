@@ -1,4 +1,3 @@
-# pragma once
 #include "CLI.h"
 #include "stack.h"
 #include "stackChangedObserver.h"
