@@ -16,7 +16,7 @@
 #include <set>
 #include <iostream>
 #include <filesystem>
-#include "WindowsDynamicLoader.h"
+#include "PlatformFactory.h"
 using std::vector;
 using std::string;
 using std::ifstream;
@@ -55,7 +55,7 @@ private:
 	PluginLoader& operator=(PluginLoader&&) = delete;
 
 	void load(UserInterface& ui, const string& name) {
-		loaders_.emplace_back(new WindowsDynamicLoader{});
+		loaders_.emplace_back(PlatformFactory::Instance().createDynamicLoader());
 		if (auto p = loaders_.back()->allocatePlugin(name)) {
 			plugins_.emplace_back(p, PluginDeleter(*loaders_.back()));
 			loaders_.back()->setStackInDLL();
