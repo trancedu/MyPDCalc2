@@ -33,6 +33,9 @@ add_library(backend SHARED
     backend/WindowsDynamicLoader.h
     backend/stack.cpp
     backend/StackPluginInterface.cpp
+    backend/PlatformFactory.cpp
+    backend/PosixFactory.cpp
+    #backend/WindowsFactory.cpp
 )
 
 # Add the ui library
@@ -42,15 +45,24 @@ add_library(ui SHARED
     ui/cli_main.cpp
 )
 
+# Add the PluginDLL library
+add_library(PluginDLL SHARED
+    PluginDLL/HyperbolicLnPlugin.h
+    PluginDLL/HyperbolicLnPlugin.cpp
+)
+
 # Include directories for all libraries
 target_include_directories(backend PUBLIC ${CMAKE_SOURCE_DIR}/backend ${CMAKE_SOURCE_DIR}/utilities)
 target_include_directories(utilities PUBLIC ${CMAKE_SOURCE_DIR}/utilities)
 target_include_directories(ui PUBLIC ${CMAKE_SOURCE_DIR}/ui ${CMAKE_SOURCE_DIR}/utilities ${CMAKE_SOURCE_DIR}/backend)
+target_include_directories(PluginDLL PUBLIC ${CMAKE_SOURCE_DIR}/PluginDLL ${CMAKE_SOURCE_DIR}/backend)
 
 # Link backend to utilities
 target_link_libraries(backend PUBLIC utilities)
 # Link ui to utilities and backend
 target_link_libraries(ui PUBLIC utilities backend)
+# Link PluginDLL to backend
+target_link_libraries(PluginDLL PUBLIC backend)
 
 # Link the main executable with the libraries
 add_executable(MyPDCalc2 MyPDCalc2/cli_main.cpp)
