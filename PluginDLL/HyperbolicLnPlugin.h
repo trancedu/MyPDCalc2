@@ -1,9 +1,5 @@
 #pragma once
-#ifdef PLUGINDLL_EXPORTS
-#define MYPLUGIN_API __declspec(dllexport)
-#else
-#define MYPLUGIN_API __declspec(dllimport)
-#endif
+#include "export.h"
 
 #include <iostream>
 #include <ranges>
@@ -18,7 +14,11 @@ using std::vector;
 using std::string;
 using std::unique_ptr;
 
-class HyperbolicLnPlugin : public Plugin
+extern "C" MYPLUGIN_API void* AllocPlugin();
+extern "C" MYPLUGIN_API void DeallocPlugin(void* p);
+extern "C" MYPLUGIN_API double addTwo(int x);
+
+class MYPLUGIN_API HyperbolicLnPlugin : public Plugin
 {
 public:
     HyperbolicLnPlugin() {
