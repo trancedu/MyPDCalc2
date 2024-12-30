@@ -128,8 +128,8 @@ private:
 class BACKEND_API PluginCommand : public Command
 {
 public:
-	PluginCommand() = default;
-	virtual ~PluginCommand() = default;
+	PluginCommand();
+	virtual ~PluginCommand();
 
 private:
 	virtual const char* checkPluginPreconditions() const noexcept = 0;
@@ -138,19 +138,3 @@ private:
 	void checkPrecondition() const override final;
 	PluginCommand* clone() const override final;
 };
-
-void PluginCommand::checkPrecondition() const
-{
-	if (const char* p = checkPluginPreconditions())
-		throw Exception(p);
-
-	return;
-}
-
-PluginCommand* PluginCommand::clone() const
-{
-	if (auto p = clonePluginImpl())
-		return p;
-	else
-		throw Exception("Problem cloning a plugin command");
-}

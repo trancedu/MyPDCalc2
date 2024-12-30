@@ -5,8 +5,8 @@
 class BACKEND_API Plugin
 {
 public:
-	Plugin() = default;
-	virtual ~Plugin() = default;
+	Plugin();
+	virtual ~Plugin();
 	struct PluginDescriptor
 	{
 		int nCommands;

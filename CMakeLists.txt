@@ -37,6 +37,8 @@ set(BACKEND_COMMON_SOURCES
     backend/stack.cpp
     backend/StackPluginInterface.cpp
     backend/PlatformFactory.cpp
+    backend/plugin.cpp
+    backend/command.cpp
 )
 
 # Add platform-specific source files
