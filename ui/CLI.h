@@ -3,8 +3,9 @@
 #include "UserInterface.h"
 #include "Tokenizer.h"
 #include "CommandInterpreter.h"
+#include "export.h"
 
-class CLI : public UserInterface
+class UI_API CLI : public UserInterface
 {
 public:
 	explicit CLI(std::istream& in, std::ostream& out);
