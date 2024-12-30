@@ -73,6 +73,9 @@ add_library(PluginDLL SHARED
     PluginDLL/HyperbolicLnPlugin.cpp
 )
 
+# Define PLUGINDLL_EXPORTS for the PluginDLL library
+target_compile_definitions(PluginDLL PRIVATE PLUGINDLL_EXPORTS)
+
 # Include directories for all libraries
 target_include_directories(backend PUBLIC ${CMAKE_SOURCE_DIR}/backend ${CMAKE_SOURCE_DIR}/utilities)
 target_include_directories(utilities PUBLIC ${CMAKE_SOURCE_DIR}/utilities)

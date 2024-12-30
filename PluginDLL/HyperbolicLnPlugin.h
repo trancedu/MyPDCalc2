@@ -1,4 +1,9 @@
 #pragma once
+#ifdef PLUGINDLL_EXPORTS
+#define MYPLUGIN_API __declspec(dllexport)
+#else
+#define MYPLUGIN_API __declspec(dllimport)
+#endif
 
 #include <iostream>
 #include <ranges>
