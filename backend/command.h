@@ -6,7 +6,7 @@
 #include "export.h"
 #include <math.h>
 
-class Command
+class BACKEND_API Command
 {
 public:
 	void execute() {
