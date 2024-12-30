@@ -1,9 +1,10 @@
 #pragma once
 #include <memory>
+#include "export.h"
 
 class DynamicLoader;
 
-class PlatformFactory
+class BACKEND_API PlatformFactory
 {
 public:
     static PlatformFactory& Instance();

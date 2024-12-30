@@ -7,7 +7,8 @@
 #error "Unsupported platform"
 #endif
 
-PlatformFactory::PlatformFactory() {}
+PlatformFactory::PlatformFactory() = default;
+PlatformFactory::~PlatformFactory() = default;
 
 PlatformFactory& PlatformFactory::Instance() {
 #ifdef _WIN32
@@ -19,5 +20,3 @@ PlatformFactory& PlatformFactory::Instance() {
 #endif
     return instance;
 }
-
-PlatformFactory::~PlatformFactory() {}
