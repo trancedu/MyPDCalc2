@@ -86,6 +86,7 @@ target_link_libraries(MyPDCalc2 PRIVATE backend utilities ui)
 set_target_properties(backend utilities ui MyPDCalc2 PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
+    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
 )
 
 # Add any additional settings or dependencies as needed
