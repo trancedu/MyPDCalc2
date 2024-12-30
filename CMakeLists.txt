@@ -55,6 +55,9 @@ endif()
 # Add the backend library
 add_library(backend SHARED ${BACKEND_COMMON_SOURCES})
 
+# Define BACKEND_EXPORTS for the backend library
+target_compile_definitions(backend PRIVATE BACKEND_EXPORTS)
+
 # Add the ui library
 add_library(ui SHARED
     ui/CLI.h

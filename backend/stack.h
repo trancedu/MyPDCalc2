@@ -1,9 +1,11 @@
 #pragma once
 #include <vector>
 #include "publisher.h"
+#include "export.h"
+
 using std::vector;
 
-class Stack : private Publisher
+class BACKEND_API Stack : private Publisher
 {
 public:
 	void push(double num, bool notify = true);
