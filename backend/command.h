@@ -3,6 +3,7 @@
 #include <string>
 #include "stack.h"
 #include "exception.h"
+#include "export.h"
 #include <math.h>
 
 class Command
@@ -124,7 +125,7 @@ private:
 };
 
 
-class PluginCommand : public Command
+class BACKEND_API PluginCommand : public Command
 {
 public:
 	PluginCommand() = default;

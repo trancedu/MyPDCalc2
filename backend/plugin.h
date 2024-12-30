@@ -1,6 +1,8 @@
 #pragma once
 #include "command.h"
-class Plugin
+#include "export.h"
+
+class BACKEND_API Plugin
 {
 public:
 	Plugin() = default;
