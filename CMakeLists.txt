@@ -18,25 +18,47 @@ add_library(utilities SHARED
 )
 
 # Add the backend library
-add_library(backend SHARED
-    backend/command.h
-    backend/CommandEnteredObserver.h
-    backend/CommandFactory.h
-    backend/CommandInterpreter.h
-    backend/CommandManager.h
-    backend/DynamicLoader.h
-    backend/plugin.h
-    backend/PluginLoader.h
-    backend/stack.h
-    backend/stackChangedObserver.h
-    backend/StackPluginInterface.h
-    backend/WindowsDynamicLoader.h
-    backend/stack.cpp
-    backend/StackPluginInterface.cpp
-    backend/PlatformFactory.cpp
-    backend/PosixFactory.cpp
-    #backend/WindowsFactory.cpp
-)
+if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    add_library(backend SHARED
+        backend/command.h
+        backend/CommandEnteredObserver.h
+        backend/CommandFactory.h
+        backend/CommandInterpreter.h
+        backend/CommandManager.h
+        backend/DynamicLoader.h
+        backend/plugin.h
+        backend/PluginLoader.h
+        backend/stack.h
+        backend/stackChangedObserver.h
+        backend/StackPluginInterface.h
+        backend/WindowsDynamicLoader.h
+        backend/stack.cpp
+        backend/StackPluginInterface.cpp
+        backend/PlatformFactory.cpp
+        backend/WindowsFactory.cpp
+        # Exclude PosixFactory.cpp on Windows
+    )
+else()
+    add_library(backend SHARED
+        backend/command.h
+        backend/CommandEnteredObserver.h
+        backend/CommandFactory.h
+        backend/CommandInterpreter.h
+        backend/CommandManager.h
+        backend/DynamicLoader.h
+        backend/plugin.h
+        backend/PluginLoader.h
+        backend/stack.h
+        backend/stackChangedObserver.h
+        backend/StackPluginInterface.h
+        backend/WindowsDynamicLoader.h
+        backend/stack.cpp
+        backend/StackPluginInterface.cpp
+        backend/PlatformFactory.cpp
+        backend/PosixFactory.cpp
+        # Exclude WindowsFactory.cpp on non-Windows
+    )
+endif()
 
 # Add the ui library
 add_library(ui SHARED
