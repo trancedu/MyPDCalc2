@@ -17,6 +17,9 @@ add_library(utilities SHARED
     utilities/publisher.cpp
 )
 
+# Define UTILITIES_EXPORTS for the utilities library
+target_compile_definitions(utilities PRIVATE UTILITIES_EXPORTS)
+
 # Define common source files for the backend library
 set(BACKEND_COMMON_SOURCES
     backend/command.h

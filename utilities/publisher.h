@@ -4,11 +4,13 @@
 #include <any>
 #include <memory>
 #include "observer.h"
+#include "export.h"
+
 using std::string;
 using std::unique_ptr, std::shared_ptr;
 using std::unordered_map;
 
-class Publisher
+class UTILITIES_API Publisher
 {
 	using ObserverUPtr = unique_ptr<Observer>;
 private:

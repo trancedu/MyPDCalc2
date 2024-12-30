@@ -1,9 +1,11 @@
 #pragma once
 #include <any>
 #include <string>
+#include "export.h"
+
 using std::string;
 
-class Observer
+class UTILITIES_API Observer
 {
 public:
 	virtual string name() const = 0;
