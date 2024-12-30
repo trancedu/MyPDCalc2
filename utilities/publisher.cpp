@@ -11,7 +11,7 @@ void Publisher::raise(const string& eventName, const std::any& message)
 	}
 }
 
-void Publisher::attach(const string& eventName, ObserverUPtr observer)
+void Publisher::attach(const string& eventName, ObserverSPtr observer)
 {
 	if (!events_[eventName].contains(observer->name())) {
 		events_.at(eventName)[observer->name()] = std::move(observer);
@@ -25,7 +25,6 @@ void Publisher::detach(const string& eventName, const string& observerName)
 		events_.at(eventName).erase(observerName);
 	}
 }
-
 
 void Publisher::checkEventNameInEvents(const string& eventName) const
 {

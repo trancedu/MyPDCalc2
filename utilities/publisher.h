@@ -12,11 +12,11 @@ using std::unordered_map;
 
 class UTILITIES_API Publisher
 {
-	using ObserverUPtr = unique_ptr<Observer>;
+	using ObserverSPtr = shared_ptr<Observer>;
 private:
-	unordered_map<string, unordered_map<string, ObserverUPtr>> events_;
+	unordered_map<string, unordered_map<string, ObserverSPtr>> events_;
 public:
-	void attach(const string& eventName, ObserverUPtr observer);
+	void attach(const string& eventName, ObserverSPtr observer);
 	void detach(const string& eventName, const string& observerName);
 	virtual ~Publisher() = default;
 protected:
