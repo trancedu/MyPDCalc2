@@ -17,6 +17,7 @@
 #include <iostream>
 #include <filesystem>
 #include "PlatformFactory.h"
+#include <filesystem>
 using std::vector;
 using std::string;
 using std::ifstream;
@@ -97,6 +98,9 @@ void registerCommand(UserInterface& ui, const string& label, CommandPtr c)
 
 set<string> setupPlugins(UserInterface& ui, PluginLoader& loader)
 {
+	std::filesystem::path currentPath = std::filesystem::current_path();
+    std::cout << "Current path: " << currentPath.string() << std::endl;
+
 	loader.loadPlugins(ui, "plugins.pdp");
 	auto plugins = loader.getPlugins();
 	
