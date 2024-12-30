@@ -7,31 +7,13 @@
 class CLI : public UserInterface
 {
 public:
-	explicit CLI(std::istream& in, std::ostream& out) : in_{ in }, out_{ out } {}
+	explicit CLI(std::istream& in, std::ostream& out);
 	CLI() = delete;
-	void showMessage(const string& message) override {
-		out_ << "Message: " << message << '\n';
-	}
+	void showMessage(const string& message) override;
 
-	void handleStackChanged() override {
-		out_ << "Stack: ";
-		vector<double> data = Stack::Instance().getElements();
-		for (const auto d : data) {
-			out_ << d << '\t';
-		}
-		out_ << '\n';
-	}
+	void handleStackChanged() override;
 
-	void execute() override {
-		for (string line; std::getline(in_, line, '\n');) {
-			std::istringstream iss{ line };
-			Tokenizer tokenizer{ iss };
-			for (const string& token : tokenizer) {
-				if (token == "exit") return;
-				raise(commandEnteredEventName(), token);
-			}
-		}
-	}
+	void execute() override;
 
 private:
 	std::istream& in_;

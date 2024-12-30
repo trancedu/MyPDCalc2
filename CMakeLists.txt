@@ -62,9 +62,8 @@ target_compile_definitions(backend PRIVATE BACKEND_EXPORTS)
 
 # Add the ui library
 add_library(ui SHARED
-    ui/CLI.h
-    ui/UserInterface.h
-    ui/cli_main.cpp
+    ui/CLI.cpp
+    ui/UserInterface.cpp
 )
 
 # Add the PluginDLL library
